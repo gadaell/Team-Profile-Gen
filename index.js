@@ -7,7 +7,37 @@ const Engineer = require("./lib/engineer");
 const Intern = require ("./lib/intern");
 // empty array to hold objects for the number of employees
 const employeeArray = [];
-
+// function to add additional members to team
+const addEmployee = () => {
+    return inquirer.prompt([
+        {
+            type: "confirm",
+            name: "addEmployeePrompt",
+            message: "Would you like to add another employee?"
+        }
+    ])
+    .then((answer) => {
+        if(answer.addEmployeePrompt === true) {
+            return inquirer.prompt([
+                {
+                    type: "list",
+                    name: "addEmployeeRole",
+                    message: "Are you adding an engineer or intern?",
+                    choices: ["Engineer", "Intern"],
+                },
+            ])
+            .then((answer) => {
+                if(answer.addEmployeeRole === "Engineer"){
+                    engineerQuestions();
+                }else if(answer.addEmployeeRole === "Intern"){
+                    internQuestions();
+                }
+            });
+        }else{
+            generateTeam(employeeArray);
+        }
+    });
+};
 //questions set up for manager once prompted by node
 //validate function prevents the user from moving on from prompt question without an answer.
 //validate funtion is not needed for overall function to work.
@@ -82,9 +112,9 @@ const managerQuestions = () => {
     employeeArray.push(manager);
 //to help verify that the data was inputted correctly in overall function
     console.log("Manager information has been added");
-    });
+    })
 // add another person function once created
-
+    .then(addEmployee);
 };
 
 //Engineer Questions
@@ -155,7 +185,7 @@ const engineerQuestions = () => {
         // pushing engineer object into employeeArray
         employeeArray.push(newEngineer);
         console.log("New engineer has been added");
-    });
+    }).then(addEmployee);
 };
 //Intern Questions
 
@@ -225,11 +255,11 @@ const internQuestions = () => {
         // pushing intern object into employeeArray
         employeeArray.push(newIntern);
         console.log("New intern has been added");
-    });
+    }).then(addEmployee);
 };
 
 
 
 
 
-managerQuestions().then(engineerQuestions).then(internQuestions);
+managerQuestions();
