@@ -96,7 +96,7 @@ const createHTMLFile = (htmlString) => {
       "
     >
       <a class="navbar-brand">
-        <i class="fa fa-users" aria-hidden="true"></i>
+        <i class="fa fa-users text-center" aria-hidden="true"></i>
         My Team
       </a>
     </nav>

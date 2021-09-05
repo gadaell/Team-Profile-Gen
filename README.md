@@ -28,6 +28,7 @@
   THEN I exit the application, and the HTML is generated
 
 # Purpose
+![Screenshot](./src/assets/screenshot-team-profile.PNG)
 
 To generate a webpage that displays a team's basic info with access to their emails and github accounts.
 
@@ -40,19 +41,24 @@ To generate a webpage that displays a team's basic info with access to their ema
 
 ## Challenges
 
-- Lorem
+- Wasn't able to figure out how to apply the startingPrompt() to incorporate the change of the title and header.
 
-- Lorem
+- Creating the template was the hardest part
 
 ## Website
 
 - https://github.com/gadaell/Team-Profile-Gen
 
-- Instuction video link: lorem
+- Instuction video link: https://drive.google.com/file/d/1lvBTdhzJQGM6ViF9uo7U0xCTMIJ8rZ6Z/view
 
 ## Installation/Usage
 
-- Lorem
+- Install VS Code.
+- Clone this Repository: https://github.com/gadaell/Professional-ReadMe-Gen
+- Download inquirer; npm install inquirer & Jest; npm install --save-dev jest
+- Run this command: "node index.js"
+- Answer the Questions
+- Once you are done navigate to the "Output" Sub-Folder and your new Create-Team html will be there!
 
 ## Contribution
 
