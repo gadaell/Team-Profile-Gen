@@ -157,9 +157,79 @@ const engineerQuestions = () => {
         console.log("New engineer has been added");
     });
 };
+//Intern Questions
+
+const internQuestions = () => {
+    return inquirer.prompt([
+    {
+            type: "input",
+            name: "internName",
+            message: "Please provide the name of the intern who is on the team.",
+            validate: (internName) => {
+            if (internName) {
+                 return true;
+             }else{
+            console.log("You must enter the name of the intern.");
+                 return false;
+            }
+        },
+    },
+    {
+            type: "input",
+            name: "internId",
+            message: "Please provide the id number of your intern.",
+            validate: (internId) => {
+            if (internId) {
+                 return true;
+             }else{
+            console.log("You must enter the intern's id number.");
+                 return false;
+            }
+        },
+    },
+    {
+            type: "input",
+            name: "internEmail",
+            message: "Please provide the intern's email address.",
+            validate: (internEmail) => {
+            if (internEmail) {
+                 return true;
+             }else{
+            console.log("You must enter the intern's email address.");
+                 return false;
+            }
+        },
+    },
+    {
+            type: "input",
+            name: "school",
+            message: "Please provide the school of the intern.",
+            validate: (school) => {
+            if (school) {
+                 return true;
+             }else{
+            console.log("You must enter the school of the intern.");
+                 return false;
+            }
+        },
+    },
+]) 
+    //Taking answers and building it into new Intern object 
+    .then((internAnswers) => {
+        const newIntern = new Intern(
+            internAnswers.internName,
+            internAnswers.internId,
+            internAnswers.internEmail,
+            internAnswers.school
+        );
+        // pushing intern object into employeeArray
+        employeeArray.push(newIntern);
+        console.log("New intern has been added");
+    });
+};
 
 
 
 
 
-managerQuestions().then(engineerQuestions);
+managerQuestions().then(engineerQuestions).then(internQuestions);
