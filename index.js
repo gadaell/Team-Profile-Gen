@@ -5,6 +5,7 @@ const inquirer = require("inquirer");
 const Manager = require ("./lib/manager");
 const Engineer = require("./lib/engineer");
 const Intern = require ("./lib/intern");
+const generateTeam = require("./src/template");
 // empty array to hold objects for the number of employees
 const employeeArray = [];
 
@@ -13,7 +14,21 @@ const employeeArray = [];
 //validate funtion is not needed for overall function to work.
 //Be specific with name input instead of just putting "Name: 'Name'", could cause problems
 //Refer back to inquirer documentation on question types to understand the type of question that is prompted by node once run 
-
+// const startingPrompt = () => {
+//     return inquirer.prompt([
+//         {
+//             type: "input",
+//             message: "Welcome to the Team Creator Generator. Please write your team name:",
+//             name: "teamname"
+//         }
+//     ])
+//         .then((data) => {
+//             const teamName = data.teamname
+//             employeeArray.push(teamName)
+//             managerQuestions();
+//         });
+  
+// }; Can't figure out how to link it to title in template.
 const managerQuestions = () => {
     return inquirer.prompt([
     {
@@ -255,6 +270,7 @@ const addEmployee = () => {
                 }
             });
         }else{
+        // generateTeam function is in template.js in src folder
             generateTeam(employeeArray);
         }
     });
